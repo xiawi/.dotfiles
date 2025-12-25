@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 ./scripts/install_packages.sh
 ./scripts/move_to_misc.sh
 ./scripts/set_defaults.sh

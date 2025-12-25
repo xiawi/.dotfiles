@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # use zsh
 chsh -s $(which zsh)
 

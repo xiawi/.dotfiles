@@ -1,12 +1,14 @@
-$!/usr/bin/env bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # Create these directories by default
-$DIRS=(
+DIRS=(
 	dev
 	notes
 )
 
 for dir in $DIRS; do
-	$target="$HOME/$dir"
+	target="$HOME/$dir"
 	mkdir -p $target
 done
