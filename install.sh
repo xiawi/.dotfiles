@@ -3,11 +3,12 @@
 ./scripts/install_packages.sh
 ./scripts/move_to_misc.sh
 ./scripts/set_defaults.sh
+./scripts/new_home.sh
 
 source packages.sh
 
-for PAC in ${PACKAGES[@]}; do
-	stow -D $PAC
-	echo "Stowing $PAC"
-	stow $PAC
+for pac in ${PACKAGES[@]}; do
+	stow -D $pac
+	echo "Stowing $pac"
+	stow $pac
 done
