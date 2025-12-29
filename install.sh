@@ -6,6 +6,7 @@ set -euo pipefail
 ./scripts/move_to_misc.sh
 ./scripts/set_defaults.sh
 ./scripts/new_home.sh
+./scripts/set_shortcuts.sh
 
 source packages.sh
 
