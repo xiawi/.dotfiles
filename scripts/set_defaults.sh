@@ -18,3 +18,6 @@ echo "Enter Email:"
 read email
 git config --global user.email $email
 git config --global core.editor nvim
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
