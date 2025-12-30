@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=YTMDesktop
+Comment=Free cross platform Desktop Player for YouTube Music
+Icon=app.ytmdesktop.ytmdesktop
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Categories=AudioVideo;Utility
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=start-ytmdesktop --file-forwarding app.ytmdesktop.ytmdesktop @@u %U @@
+StartupWMClass=YouTube Music Desktop App
+X-Flatpak=app.ytmdesktop.ytmdesktop
