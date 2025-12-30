@@ -5,7 +5,6 @@ set -euo pipefail
 PACKAGES=(
 	zsh
 	neovim
-	snapd
 	stow
 )
 
@@ -14,14 +13,9 @@ FLATPAK=(
 	md.obsidian.Obsidian
 	com.bitwarden.desktop
 	app.zen_browser.zen
-)
-
-SNAP=(
-	youtube-music-desktop-app
+	app.ytmdesktop.ytmdesktop
 )
 
 sudo dnf install -y ${PACKAGES[@]}
 
 sudo flatpak install ${FLATPAK[@]}
-
-sudo snap install ${SNAP[@]}
