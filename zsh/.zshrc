@@ -1,3 +1,7 @@
 alias vim="nvim"
-alias open='xdg-open'
+
+function open() {
+    xdg-open "$@" >/dev/null 2>&1 &
+    disown
+}
 
