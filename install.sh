@@ -8,6 +8,7 @@ set -euo pipefail
 ./scripts/new_home.sh
 ./scripts/set_shortcuts.sh
 ./scripts/install_extensions.sh
+./scripts/pin_to_dash.sh
 
 source packages.sh
 
