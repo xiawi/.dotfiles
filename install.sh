@@ -7,6 +7,7 @@ set -euo pipefail
 ./scripts/set_defaults.sh
 ./scripts/new_home.sh
 ./scripts/set_shortcuts.sh
+./scripts/install_extensions.sh
 
 source packages.sh
 
@@ -15,3 +16,5 @@ for pac in ${PACKAGES[@]}; do
 	echo "Stowing $pac"
 	stow $pac
 done
+
+
