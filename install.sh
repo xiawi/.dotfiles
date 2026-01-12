@@ -9,6 +9,7 @@ set -euo pipefail
 ./scripts/set_shortcuts.sh
 ./scripts/install_extensions.sh
 ./scripts/pin_to_dash.sh
+./scripts/install_powerlevel10k.sh
 
 source packages.sh
 
