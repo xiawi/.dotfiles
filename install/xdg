@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+MISC="$HOME/misc"
+CONFIG="$HOME/.config"
+USER_DIRS="$CONFIG/user-dirs.dirs"
+
+directories=(
+    Desktop
+    Documents
+    Downloads
+    Music
+    Pictures
+    Public
+    Templates
+    Videos
+)
+
+mkdir -p "$MISC" "$CONFIG"
+
+for dir in "${directories[@]}"; do
+    src="$HOME/$dir"
+    dst="$MISC/$dir"
+
+    if [[ -d "$src" && ! -e "$dst" ]]; then
+        mv "$src" "$dst"
+    fi
+
+    mkdir -p "$dst"
+done
+
+cat > "$USER_DIRS" <<EOF
+XDG_DESKTOP_DIR="\$HOME/misc/Desktop"
+XDG_DOCUMENTS_DIR="\$HOME/misc/Documents"
+XDG_DOWNLOAD_DIR="\$HOME/misc/Downloads"
+XDG_MUSIC_DIR="\$HOME/misc/Music"
+XDG_PICTURES_DIR="\$HOME/misc/Pictures"
+XDG_PUBLICSHARE_DIR="\$HOME/misc/Public"
+XDG_TEMPLATES_DIR="\$HOME/misc/Templates"
+XDG_VIDEOS_DIR="\$HOME/misc/Videos"
+EOF
+
+xdg-user-dirs-update
+
+echo "XDG user directories configured:"
+xdg-user-dir DESKTOP
+xdg-user-dir DOCUMENTS
+xdg-user-dir DOWNLOAD
+xdg-user-dir MUSIC
+xdg-user-dir PICTURES
+xdg-user-dir PUBLICSHARE
+xdg-user-dir TEMPLATES
+xdg-user-dir VIDEOS
+

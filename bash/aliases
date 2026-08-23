@@ -1,0 +1,12 @@
+# Listing
+alias ls='ls --color=auto --group-directories-first'
+
+# Safety
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Other
+alias vim='nvim'
+alias so='source ~/.bashrc'
+alias open='xdg-open'

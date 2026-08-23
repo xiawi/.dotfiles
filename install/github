@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SSH_DIR="$HOME/.ssh"
+KEY="$SSH_DIR/id_ed25519"
+PUBLIC_KEY="$KEY.pub"
+
+# +---------------------------------------------------------------------------+
+# | Requirements                                                              |
+# +---------------------------------------------------------------------------+
+
+if ! command -v gh >/dev/null 2>&1; then
+	echo "Error: GitHub CLI (gh) is not installed." >&2
+	exit 1
+fi
+
+# +---------------------------------------------------------------------------+
+# | GitHub authentication                                                      |
+# +---------------------------------------------------------------------------+
+
+if ! gh auth status >/dev/null 2>&1; then
+	echo "GitHub authentication required..."
+	gh auth login --git-protocol ssh
+fi
+
+# +---------------------------------------------------------------------------+
+# | SSH key                                                                    |
+# +---------------------------------------------------------------------------+
+
+mkdir -p "$SSH_DIR"
+chmod 700 "$SSH_DIR"
+
+if [[ ! -f "$KEY" ]]; then
+	echo "Generating GitHub SSH key..."
+
+	ssh_email="$(git config --global user.email 2>/dev/null || true)"
+
+	if [[ -z "$ssh_email" ]]; then
+		read -rp "Email for SSH key: " ssh_email
+	fi
+
+	ssh-keygen \
+		-t ed25519 \
+		-C "$ssh_email" \
+		-f "$KEY"
+else
+	echo "SSH key already exists, skipping."
+fi
+
+chmod 600 "$KEY"
+chmod 644 "$PUBLIC_KEY"
+
+# +---------------------------------------------------------------------------+
+# | Add key to GitHub                                                           |
+# +---------------------------------------------------------------------------+
+
+fingerprint="$(ssh-keygen -lf "$PUBLIC_KEY" | awk '{print $2}')"
+
+if gh api user/keys --jq '.[].key' | grep -Fqx "$(cat "$PUBLIC_KEY")"; then
+	echo "SSH key already registered with GitHub, skipping."
+else
+	echo "Adding SSH key to GitHub..."
+
+	gh ssh-key add "$PUBLIC_KEY" \
+		--type authentication \
+		--title "$(hostname)"
+fi
+
+# +---------------------------------------------------------------------------+
+# | Configure GitHub CLI + Git                                                 |
+# +---------------------------------------------------------------------------+
+
+gh auth setup-git
+
+echo "GitHub setup complete."
+

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$(dirname -- "${BASH_SOURCE[0]}")/../lib/constants.sh"
+source "$DOTFILES/lib/functions.sh"
+
+git_name="$(git config --global user.name 2>/dev/null || true)"
+git_email="$(git config --global user.email 2>/dev/null || true)"
+
+if [[ -z "$git_name" ]]; then
+	read -rp "Git name: " git_name
+fi
+
+if [[ -z "$git_email" ]]; then
+	read -rp "Git email: " git_email
+fi
+
+cat > "$HOME/.gitconfig" <<EOF
+[include]
+	path = $DOTFILES/git/config
+[user]
+	name = $git_name
+	email = $git_email
+EOF
+
+ln -sfn "$DOTFILES/git/ignore" "$HOME/.gitignore_global"
+
+success "Git configured for $git_name <$git_email>"

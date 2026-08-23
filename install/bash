@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$(dirname -- "${BASH_SOURCE[0]}")/../lib/constants.sh"
+source "$DOTFILES/lib/functions.sh"
+
+ln -sfn "$DOTFILES/bash/bashrc" "$HOME/.bashrc"
+

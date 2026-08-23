@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$(dirname -- "${BASH_SOURCE[0]}")/../lib/constants.sh"
+source "$DOTFILES/lib/functions.sh"
+
+mkdir -p "$HOME/.config"
+
+ln -sfn "$DOTFILES/starship/starship.toml" "$HOME/.config/starship.toml"
+

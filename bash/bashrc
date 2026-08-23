@@ -1,0 +1,8 @@
+fastfetch
+
+BASH_FILES="$HOME/.dotfiles/bash"
+
+# Load shell configurations
+[ -f $BASH_FILES/aliases ] && source "$BASH_FILES/aliases"
+[ -f $BASH_FILES/prompt ] && source "$BASH_FILES/prompt"
+
