@@ -5,3 +5,5 @@ theme = Gruvbox Dark
 
 background-opacity = 0.95
 background-blur = true
+
+fullscreen = true
