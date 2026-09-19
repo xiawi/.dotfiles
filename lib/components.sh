@@ -10,6 +10,7 @@ declare -A BOOTSTRAP=(
 	[spacemono]="$DOTFILES/packages/spacemono.sh"
 	[starship]="$DOTFILES/packages/starship.sh"
 	[zk]="$DOTFILES/packages/zk.sh"
+	[bookokrat]="$DOTFILES/packages/bookokrat.sh"
 )
 
 # Components that can be configured.
