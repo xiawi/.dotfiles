@@ -23,4 +23,5 @@ declare -A INSTALL=(
 	[nvim]="$DOTFILES/install/nvim"
 	[xdg]="$DOTFILES/install/xdg"
 	[zk]="$DOTFILES/install/zk"
+	[home]="$DOTFILES/install/home"
 )

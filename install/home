@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$(dirname -- "${BASH_SOURCE[0]}")/../lib/constants.sh"
+source "$DOTFILES/lib/functions.sh"
+
+directories=(
+	books
+	projects
+)
+
+for dir in "${directories[@]}"; do
+	info "Making $dir directory..."
+	mkdir -p "$HOME/$dir"
+	success "$dir successfully created"
+done
