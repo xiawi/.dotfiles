@@ -18,7 +18,8 @@ sudo apt install -y \
 	cmake \
 	curl \
 	build-essential \
-	git
+	git \
+	tree-sitter-cli \
 
 # clone, build, and install neovim
 rm -rf /tmp/neovim
