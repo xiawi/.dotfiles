@@ -11,6 +11,8 @@ declare -A BOOTSTRAP=(
 	[starship]="$DOTFILES/packages/starship.sh"
 	[zk]="$DOTFILES/packages/zk.sh"
 	[bookokrat]="$DOTFILES/packages/bookokrat.sh"
+	[snap]="$DOTFILES/packages/snap.sh"
+	[lsp]="$DOTFILES/packages/lsp.sh"
 )
 
 # Components that can be configured.
