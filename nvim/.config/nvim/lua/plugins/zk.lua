@@ -14,3 +14,7 @@ zk.setup({
 		multi_select_strategy = "AND",
 	},
 })
+
+vim.keymap.set("v", "<leader>znt", ":'<,\'>ZkNewFromTitleSelection<CR>", { desc = "Zk New Note from Title" })
+vim.keymap.set("v", "<leader>znc", ":'<,\'>ZkNewFromContentSelection<CR>", { desc = "Zk New Note from Content" })
+
